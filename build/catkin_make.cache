@@ -1,0 +1,2 @@
+mav1
+-DCMAKE_BUILD_TYPE=RelWithDebInfo -DCATKIN_DEVEL_PREFIX=/home/lee/workspace/ROS_WS/ex_qav250_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lee/workspace/ROS_WS/ex_qav250_ws/install -G Unix Makefiles

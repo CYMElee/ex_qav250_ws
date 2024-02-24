@@ -1,0 +1,8 @@
+prefix=/home/lee/workspace/ROS_WS/ex_qav250_ws/install
+
+Name: MAV1
+Description: Description of MAV1
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
