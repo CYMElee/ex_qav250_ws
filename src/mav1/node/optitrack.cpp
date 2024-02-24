@@ -15,7 +15,7 @@ int main(int argv,char** argc)
     ros::NodeHandle nh;
 
     ros::Publisher position_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/vision_pose/pose", 2);
-    ros::Subscriber host_sub = nh.subscribe<geometry_msgs::PoseStamped>("/MAV1/mavros/local_position/pose", 10, host);
+    ros::Subscriber host_sub = nh.subscribe<geometry_msgs::PoseStamped>("mavros/local_position/pose", 10, host);
     ros::Rate rate(100);
     while(ros::ok())
     {
