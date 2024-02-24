@@ -1,6 +1,7 @@
 #include "ros/ros.h"
 #include <geometry_msgs/PoseStamped.h>
 #include <mavros_msgs/CommandBool.h>
+#include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 
@@ -54,6 +55,16 @@ int main(int argv,char** argc)
 
     ros::Time last_request = ros::Time::now();
 
+    if( set_mode_client.call(offb_set_mode) && offb_set_mode.response.mode_sent) {
+        ROS_INFO("GUIDED enabled");
+    }
+
+    if( arming_client.call(arm_cmd) && arm_cmd.response.success) {
+        ROS_INFO("Vehicle armed");
+    }
+    ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
+    //mavros_msgs::CommandTOL srv_takeoff;
+   //srv_takeoff.request.altitude = 1.0;
     while(ros::ok()){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){
