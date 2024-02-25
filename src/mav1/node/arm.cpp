@@ -1,102 +1,106 @@
-#include "ros/ros.h"
+#include <ros/ros.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/Twist.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 
 mavros_msgs::State current_state;
-geometry_msgs::PoseStamped pose;
 
 
-void state_cb(const mavros_msgs::State::ConstPtr& msg){
+void state_callback(const mavros_msgs::State::ConstPtr &msg) {
     current_state = *msg;
 }
 
-int main(int argv,char** argc)
-{
-    ros::init(argv,argc,"arm");
-    ros::NodeHandle nh;
+int main(int argc, char **argv) {
+    ros::init(argc, argv, "arm");
+    ros::NodeHandle n;
 
-    ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>
-        ("mavros/state", 10, state_cb);
+    ros::Subscriber state_sub = n.subscribe("mavros/state", 10, state_callback);
 
-    ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>
-        ("mavros/setpoint_position/local", 10);
-    
-    ros::ServiceClient arming_client = nh.serviceClient<mavros_msgs::CommandBool>
-        ("mavros/cmd/arming");
+    ros::Rate rate(25);
 
-    ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>
-        ("mavros/set_mode");
-
-    ros::Rate rate(25.0);
-
-    while(ros::ok() && !current_state.connected){
+    ROS_INFO("Initializing...");
+    while (ros::ok() && !current_state.connected) {
         ros::spinOnce();
         rate.sleep();
     }
-    pose.pose.position.x = 0;
-    pose.pose.position.y = 0;
-    pose.pose.position.z = 0;
-    //send a few setpoints before starting
+    ROS_INFO("Connected.");
 
-    for(int i = 100; ros::ok() && i > 0; --i){
-        local_pos_pub.publish(pose);
-        ros::spinOnce();
-        rate.sleep();
+  
+    ros::ServiceClient cl = n.serviceClient<mavros_msgs::SetMode>("mavros/set_mode");
+    mavros_msgs::SetMode srv_setMode;
+    srv_setMode.request.base_mode = 0;
+    srv_setMode.request.custom_mode = "GUIDED";
+    if (cl.call(srv_setMode)) {
+        ROS_INFO("setmode send ok %d value:", srv_setMode.response.mode_sent);
+    } else {
+        ROS_ERROR("Failed SetMode");
+        return -1;
     }
 
-    mavros_msgs::SetMode offb_set_mode;
-    offb_set_mode.request.custom_mode = "GUIDED";
 
-    mavros_msgs::CommandBool arm_cmd;
-    arm_cmd.request.value = true;
-
-    ros::Time last_request = ros::Time::now();
-
-    if( set_mode_client.call(offb_set_mode) && offb_set_mode.response.mode_sent) {
-        ROS_INFO("GUIDED enabled");
+    ros::ServiceClient arming_cl = n.serviceClient<mavros_msgs::CommandBool>("mavros/cmd/arming");
+    mavros_msgs::CommandBool srv;
+    srv.request.value = true;
+    if (arming_cl.call(srv)) {
+        ROS_INFO("ARM send ok %d", srv.response.success);
+    } else {
+        ROS_ERROR("Failed arming or disarming");
     }
 
-    if( arming_client.call(arm_cmd) && arm_cmd.response.success) {
-        ROS_INFO("Vehicle armed");
-    }
-    ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
+ 
+    ros::ServiceClient takeoff_cl = n.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
     mavros_msgs::CommandTOL srv_takeoff;
-    srv_takeoff.request.altitude = 0.0;
+    srv_takeoff.request.altitude = 10;
+    srv_takeoff.request.latitude = 0;
+    srv_takeoff.request.longitude = 0;
+    srv_takeoff.request.min_pitch = 0;
+    srv_takeoff.request.yaw = 0;
     if (takeoff_cl.call(srv_takeoff)) {
         ROS_INFO("srv_takeoff send ok %d", srv_takeoff.response.success);
     } else {
         ROS_ERROR("Failed Takeoff");
     }
-    sleep(12);
-    while(ros::ok()){
-        if( current_state.mode != "GUIDED" &&
-            (ros::Time::now() - last_request > ros::Duration(5.0))){
-            if( set_mode_client.call(offb_set_mode) &&
-                offb_set_mode.response.mode_sent){
-                ROS_INFO("GUIDED enabled");
-            }
-            last_request = ros::Time::now();
-        } else {
-            if( !current_state.armed &&
-                (ros::Time::now() - last_request > ros::Duration(5.0))){
-                if( arming_client.call(arm_cmd) &&
-                    arm_cmd.response.success){
-                    ROS_INFO("Vehicle armed");
-                }
-                last_request = ros::Time::now();
-            }
-        }
 
-        //local_pos_pub.publish(pose);
+    sleep(10);
+
+    geometry_msgs::PoseStamped pose;
+    pose.header.frame_id = "map";
+    pose.pose.position.x = 0;
+    pose.pose.position.y = 0;
+    pose.pose.position.z = 2;
+
+    geometry_msgs::Twist vel;
+    vel.linear.x = 0.0;
+    vel.linear.y = 0.0;
+    vel.linear.z = 0.0;
+    vel.angular.x = 0.0;
+    vel.angular.y = 0.0;
+    vel.angular.z = 0.0;
+
+    ros::Publisher local_vel_pub = n.advertise<geometry_msgs::Twist>
+            ("mavros/setpoint_velocity/cmd_vel_unstamped", 10);
+    ros::Publisher local_pos_pub = n.advertise<geometry_msgs::PoseStamped>
+            ("mavros/setpoint_position/local", 10);
+
+    ros::Time time_start = ros::Time::now();
+
+   
+    while (ros::ok()) {
+        pose.pose.position.x = sin(2.0 * M_PI * 2.0 * (ros::Time::now() - time_start).toSec());
+        pose.pose.position.y = cos(2.0 * M_PI * 2.0 * (ros::Time::now() - time_start).toSec());
+
+        vel.linear.x = 2.0 * M_PI * 2.0 * cos(2.0 * M_PI * 0.1 * (ros::Time::now() - time_start).toSec());
+        vel.linear.y = -2.0 * M_PI * 2.0 * sin(2.0 * M_PI * 0.1 * (ros::Time::now() - time_start).toSec());
+
+        local_pos_pub.publish(pose);
+        local_vel_pub.publish(vel);
 
         ros::spinOnce();
         rate.sleep();
     }
-
-
 
     return 0;
 }

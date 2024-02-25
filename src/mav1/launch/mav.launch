@@ -1,6 +1,6 @@
 <launch>
     <arg name="fcu_url" default="/dev/ttyUSB0:230400"/>
-    <arg name="gcs_url" default="udp://@192.168.50.254"/>
+    <arg name="gcs_url" default="udp://@192.168.50.86"/>
     <arg name="SYS_ID" default="1"/>
 
     <group ns="MAV$(arg SYS_ID)">
@@ -10,7 +10,7 @@
             <arg name="gcs_url" value="$(arg gcs_url)"/>
             <arg name="tgt_system" value="$(arg SYS_ID)"/>
         </include> 
-        <node name="optitrack" pkg="mav1" type="optitrack" output="screen">
+        <node name="optitrack" pkg="mav1" type="optitrack" output="screen"></node>
         <node name="arm" pkg="mav1" type="arm" output="screen"></node>
     </group>
 </launch>
