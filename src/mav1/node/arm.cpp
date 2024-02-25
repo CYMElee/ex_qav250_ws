@@ -30,7 +30,7 @@ int main(int argv,char** argc)
     ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>
         ("mavros/set_mode");
 
-    ros::Rate rate(30.0);
+    ros::Rate rate(25.0);
 
     while(ros::ok() && !current_state.connected){
         ros::spinOnce();
@@ -62,9 +62,15 @@ int main(int argv,char** argc)
     if( arming_client.call(arm_cmd) && arm_cmd.response.success) {
         ROS_INFO("Vehicle armed");
     }
-    ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
-    //mavros_msgs::CommandTOL srv_takeoff;
-   //srv_takeoff.request.altitude = 1.0;
+    ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
+    mavros_msgs::CommandTOL srv_takeoff;
+    srv_takeoff.request.altitude = 0.0;
+    if (takeoff_cl.call(srv_takeoff)) {
+        ROS_INFO("srv_takeoff send ok %d", srv_takeoff.response.success);
+    } else {
+        ROS_ERROR("Failed Takeoff");
+    }
+    sleep(12);
     while(ros::ok()){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){

@@ -15,11 +15,11 @@ int main(int argv,char** argc)
     ros::NodeHandle nh;
 
     ros::Publisher position_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/vision_pose/pose", 2);
-    ros::Subscriber host_sub = nh.subscribe<geometry_msgs::PoseStamped>("mavros/local_position/pose", 10, host);
+    ros::Subscriber host_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV1/pose", 10, host);
     ros::Rate rate(100);
     while(ros::ok())
     {
-        ROS_INFO("MAV1: %.3f, %.3f , %.3f",pos.pose.position.x,pos.pose.position.y,pos.pose.position.z);
+        //ROS_INFO("MAV1: %.3f, %.3f , %.3f",pos.pose.position.x,pos.pose.position.y,pos.pose.position.z);
         position_pub.publish(pos);
         ros::spinOnce();
         rate.sleep();
