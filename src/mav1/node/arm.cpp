@@ -81,8 +81,8 @@ int main(int argv,char** argc)
     } else {
         ROS_ERROR("Failed Takeoff");
     }
-    sleep(10);
-    while(ros::ok()){
+    ros::Time time_out = ros::Time::now();
+    while(ros::ok() || ros::Time::now() - time_out <ros::Duration(10.0) ){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){
             if( set_mode_client.call(offb_set_mode) &&
@@ -106,6 +106,13 @@ int main(int argv,char** argc)
         ros::spinOnce();
         rate.sleep();
     }
+        ROS_WARN("kill!");
+        offb_set_mode.request.custom_mode = "LAND";
+        set_mode_client.call(offb_set_mode);
+        arm_cmd.request.value = false;
+        arming_client.call(arm_cmd);
+        sleep(3);
+
 
 
 
