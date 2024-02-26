@@ -1,9 +1,11 @@
 #include "ros/ros.h"
+#include <string>
 #include <geometry_msgs/PoseStamped.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
+#include <mavros_msgs/Mavlink.h>
 
 mavros_msgs::State current_state;
 geometry_msgs::PoseStamped pose;
@@ -17,6 +19,7 @@ int main(int argv,char** argc)
 {
     ros::init(argv,argc,"arm");
     ros::NodeHandle nh;
+    int UAV_ID;
 
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>
         ("mavros/state", 10, state_cb);
@@ -36,6 +39,14 @@ int main(int argv,char** argc)
         ros::spinOnce();
         rate.sleep();
     }
+    ros::param::get("UAV_ID", UAV_ID);
+    ROS_INFO("Wait for setting origin and home position...");
+    std::string mavlink_topic = std::string("/MAV") + std::to_string(UAV_ID) + std::string("/mavlink/to");
+    ros::topic::waitForMessage<mavros_msgs::Mavlink>(mavlink_topic, ros::Duration(10.0));
+    ROS_INFO("Message received or timeout reached. Continuing execution.");
+    sleep(2);
+ 
+
     pose.pose.position.x = 0;
     pose.pose.position.y = 0;
     pose.pose.position.z = 0;
@@ -70,7 +81,7 @@ int main(int argv,char** argc)
     } else {
         ROS_ERROR("Failed Takeoff");
     }
-    sleep(12);
+    sleep(10);
     while(ros::ok()){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){
