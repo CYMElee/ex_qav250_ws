@@ -75,14 +75,19 @@ int main(int argv,char** argc)
     }
     ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
     mavros_msgs::CommandTOL srv_takeoff;
-    srv_takeoff.request.altitude = 0.0;
+    srv_takeoff.request.altitude = 0.5;
+    srv_takeoff.request.latitude = 0;
+    srv_takeoff.request.longitude = 0;
+    srv_takeoff.request.min_pitch = 0;
+    srv_takeoff.request.yaw = 0;
     if (takeoff_cl.call(srv_takeoff)) {
         ROS_INFO("srv_takeoff send ok %d", srv_takeoff.response.success);
     } else {
         ROS_ERROR("Failed Takeoff");
     }
+    sleep(10);
     ros::Time time_out = ros::Time::now();
-    while(ros::ok() || ros::Time::now() - time_out <ros::Duration(10.0) ){
+    while(ros::ok() || ros::Time::now() - time_out <ros::Duration(5.0) ){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){
             if( set_mode_client.call(offb_set_mode) &&
