@@ -85,6 +85,8 @@ int main(int argv,char** argc)
     } else {
         ROS_ERROR("Failed Takeoff");
     }
+    offb_set_mode.request.custom_mode = "LOITER";
+    
     sleep(10);
     ros::Time time_out = ros::Time::now();
     while(ros::ok() || ros::Time::now() - time_out <ros::Duration(5.0) ){
