@@ -33,7 +33,7 @@ int main(int argv,char** argc)
     ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>
         ("mavros/set_mode");
 
-    ros::Rate rate(25.0);
+    ros::Rate rate(100.0);
 
     while(ros::ok() && !current_state.connected){
         ros::spinOnce();
@@ -86,7 +86,7 @@ int main(int argv,char** argc)
         ROS_ERROR("Failed Takeoff");
     }
     offb_set_mode.request.custom_mode = "LOITER";
-    
+
     sleep(10);
     ros::Time time_out = ros::Time::now();
     while(ros::ok() || ros::Time::now() - time_out <ros::Duration(5.0) ){
