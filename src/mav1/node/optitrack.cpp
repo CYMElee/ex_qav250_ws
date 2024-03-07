@@ -14,6 +14,7 @@ int main(int argv,char** argc)
     ros::init(argv,argc,"optitrack");
     ros::NodeHandle nh;
 
+    //subscribe :/vrpn_client_mode .... and publish to mavros/vison... then uav can receive optitrack
     ros::Publisher position_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/vision_pose/pose", 2);
     ros::Subscriber host_sub = nh.subscribe<geometry_msgs::PoseStamped>("/vrpn_client_node/MAV1/pose", 10, host);
     ros::Rate rate(100);

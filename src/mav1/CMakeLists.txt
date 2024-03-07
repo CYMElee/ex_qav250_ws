@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf2
   tf2_geometry_msgs
   tf2_ros
+  mavros_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -134,10 +135,10 @@ include_directories(
 ## either from message generation or dynamic reconfigure
 add_executable(optitrack node/optitrack.cpp)
 add_executable(arm node/arm.cpp)
-add_executable(get_state node/get_state.cpp)
+
 add_dependencies(optitrack ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(arm ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(get_state  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
@@ -162,9 +163,7 @@ target_link_libraries(arm
   ${catkin_LIBRARIES}
 )
 
-target_link_libraries(get_state 
-  ${catkin_LIBRARIES}
-)
+
 
 #############
 ## Install ##
