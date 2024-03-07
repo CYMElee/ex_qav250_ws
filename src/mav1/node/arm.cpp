@@ -85,11 +85,11 @@ int main(int argv,char** argc)
     } else {
         ROS_ERROR("Failed Takeoff");
     }
-    offb_set_mode.request.custom_mode = "LOITER";
-
+   
+    pose.pose.position.z = 0.5;
     sleep(10);
     ros::Time time_out = ros::Time::now();
-    while(ros::ok() || ros::Time::now() - time_out <ros::Duration(5.0) ){
+    while(ros::ok() && ros::Time::now() - time_out <ros::Duration(5.0) ){
         if( current_state.mode != "GUIDED" &&
             (ros::Time::now() - last_request > ros::Duration(5.0))){
             if( set_mode_client.call(offb_set_mode) &&
@@ -108,7 +108,7 @@ int main(int argv,char** argc)
             }
         }
 
-        //local_pos_pub.publish(pose);
+        local_pos_pub.publish(pose);
 
         ros::spinOnce();
         rate.sleep();
