@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp
+/home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp
 ros/ros.h
-/home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/ros/ros.h
+/home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/ros/ros.h
 geometry_msgs/PoseStamped.h
-/home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/geometry_msgs/PoseStamped.h
+/home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/geometry_msgs/PoseStamped.h
 
 /opt/ros/noetic/include/geometry_msgs/Point.h
 string

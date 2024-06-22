@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/yajie_ws/ex_qav250_ws/install
+
+Name: record
+Description: Description of record
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

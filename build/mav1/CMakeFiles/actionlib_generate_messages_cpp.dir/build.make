@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lee/workspace/ROS_WS/ex_qav250_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/yajie_ws/ex_qav250_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lee/workspace/ROS_WS/ex_qav250_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/yajie_ws/ex_qav250_ws/build
 
 # Utility rule file for actionlib_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/build: actionlib_generate_me
 .PHONY : mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/build
 
 mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/clean:
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -P CMakeFiles/actionlib_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/clean
 
 mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/depend:
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/workspace/ROS_WS/ex_qav250_ws/src /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1 /home/lee/workspace/ROS_WS/ex_qav250_ws/build /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/yajie_ws/ex_qav250_ws/src /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1 /home/ubuntu/yajie_ws/ex_qav250_ws/build /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mav1/CMakeFiles/actionlib_generate_messages_cpp.dir/depend
 

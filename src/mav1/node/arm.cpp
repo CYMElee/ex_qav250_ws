@@ -40,13 +40,12 @@ int main(int argv,char** argc)
         rate.sleep();
     }
     ros::param::get("UAV_ID", UAV_ID);
+   // UAV_ID = 1;
     ROS_INFO("Wait for setting origin and home position...");
     std::string mavlink_topic = std::string("/MAV") + std::to_string(UAV_ID) + std::string("/mavlink/to");
-    ros::topic::waitForMessage<mavros_msgs::Mavlink>(mavlink_topic, ros::Duration(10.0));
+    ros::topic::waitForMessage<mavros_msgs::Mavlink>(mavlink_topic);
     ROS_INFO("Message received or timeout reached. Continuing execution.");
-    sleep(2);
  
-
     pose.pose.position.x = 0;
     pose.pose.position.y = 0;
     pose.pose.position.z = 0;
@@ -76,37 +75,15 @@ int main(int argv,char** argc)
     ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("mavros/cmd/takeoff");
     mavros_msgs::CommandTOL srv_takeoff;
     srv_takeoff.request.altitude = 0.5;
-    srv_takeoff.request.latitude = 0;
-    srv_takeoff.request.longitude = 0;
-    srv_takeoff.request.min_pitch = 0;
-    srv_takeoff.request.yaw = 0;
     if (takeoff_cl.call(srv_takeoff)) {
         ROS_INFO("srv_takeoff send ok %d", srv_takeoff.response.success);
     } else {
         ROS_ERROR("Failed Takeoff");
     }
-    offb_set_mode.request.custom_mode = "LOITER";
 
     sleep(10);
     ros::Time time_out = ros::Time::now();
-    while(ros::ok() || ros::Time::now() - time_out <ros::Duration(5.0) ){
-        if( current_state.mode != "GUIDED" &&
-            (ros::Time::now() - last_request > ros::Duration(5.0))){
-            if( set_mode_client.call(offb_set_mode) &&
-                offb_set_mode.response.mode_sent){
-                ROS_INFO("GUIDED enabled");
-            }
-            last_request = ros::Time::now();
-        } else {
-            if( !current_state.armed &&
-                (ros::Time::now() - last_request > ros::Duration(5.0))){
-                if( arming_client.call(arm_cmd) &&
-                    arm_cmd.response.success){
-                    ROS_INFO("Vehicle armed");
-                }
-                last_request = ros::Time::now();
-            }
-        }
+    while(ros::ok() && ros::Time::now() - time_out <ros::Duration(10.0) ){
 
         //local_pos_pub.publish(pose);
 

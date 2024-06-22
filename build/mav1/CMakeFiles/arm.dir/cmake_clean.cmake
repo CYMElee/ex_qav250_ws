@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/arm"
-  "/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/arm.pdb"
+  "/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/arm"
+  "/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/arm.pdb"
   "CMakeFiles/arm.dir/node/arm.cpp.o"
 )
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp" "/home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o"
+  "/home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp" "/home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

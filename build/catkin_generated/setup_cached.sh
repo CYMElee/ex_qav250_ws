@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/lee/workspace/ROS_WS/ex_qav250_ws/build'
+export PWD='/home/ubuntu/yajie_ws/ex_qav250_ws/build'

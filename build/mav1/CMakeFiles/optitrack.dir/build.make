@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lee/workspace/ROS_WS/ex_qav250_ws/src
+CMAKE_SOURCE_DIR = /home/ubuntu/yajie_ws/ex_qav250_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lee/workspace/ROS_WS/ex_qav250_ws/build
+CMAKE_BINARY_DIR = /home/ubuntu/yajie_ws/ex_qav250_ws/build
 
 # Include any dependencies generated for this target.
 include mav1/CMakeFiles/optitrack.dir/depend.make
@@ -58,17 +58,17 @@ include mav1/CMakeFiles/optitrack.dir/progress.make
 include mav1/CMakeFiles/optitrack.dir/flags.make
 
 mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o: mav1/CMakeFiles/optitrack.dir/flags.make
-mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o: /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lee/workspace/ROS_WS/ex_qav250_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o"
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/optitrack.dir/node/optitrack.cpp.o -c /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp
+mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o: /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/yajie_ws/ex_qav250_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o"
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/optitrack.dir/node/optitrack.cpp.o -c /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp
 
 mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/optitrack.dir/node/optitrack.cpp.i"
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp > CMakeFiles/optitrack.dir/node/optitrack.cpp.i
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp > CMakeFiles/optitrack.dir/node/optitrack.cpp.i
 
 mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/optitrack.dir/node/optitrack.cpp.s"
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/node/optitrack.cpp -o CMakeFiles/optitrack.dir/node/optitrack.cpp.s
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/node/optitrack.cpp -o CMakeFiles/optitrack.dir/node/optitrack.cpp.s
 
 # Object files for target optitrack
 optitrack_OBJECTS = \
@@ -77,45 +77,45 @@ optitrack_OBJECTS = \
 # External object files for target optitrack
 optitrack_EXTERNAL_OBJECTS =
 
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/build.make
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/liborocos-kdl.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/liborocos-kdl.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libtf2_ros.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libactionlib.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libmessage_filters.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libroscpp.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole_log4cxx.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole_backend_interface.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libxmlrpcpp.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libtf2.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libroscpp_serialization.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librostime.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libcpp_common.so
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lee/workspace/ROS_WS/ex_qav250_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack"
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/optitrack.dir/link.txt --verbose=$(VERBOSE)
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/node/optitrack.cpp.o
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/build.make
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/liborocos-kdl.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/liborocos-kdl.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libtf2_ros.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libactionlib.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libmessage_filters.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libroscpp.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libpthread.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole_log4cxx.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librosconsole_backend_interface.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/liblog4cxx.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libxmlrpcpp.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libtf2.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libroscpp_serialization.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/librostime.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /opt/ros/noetic/lib/libcpp_common.so
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
+/home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack: mav1/CMakeFiles/optitrack.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/yajie_ws/ex_qav250_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack"
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/optitrack.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-mav1/CMakeFiles/optitrack.dir/build: /home/lee/workspace/ROS_WS/ex_qav250_ws/devel/lib/mav1/optitrack
+mav1/CMakeFiles/optitrack.dir/build: /home/ubuntu/yajie_ws/ex_qav250_ws/devel/lib/mav1/optitrack
 
 .PHONY : mav1/CMakeFiles/optitrack.dir/build
 
 mav1/CMakeFiles/optitrack.dir/clean:
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -P CMakeFiles/optitrack.dir/cmake_clean.cmake
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 && $(CMAKE_COMMAND) -P CMakeFiles/optitrack.dir/cmake_clean.cmake
 .PHONY : mav1/CMakeFiles/optitrack.dir/clean
 
 mav1/CMakeFiles/optitrack.dir/depend:
-	cd /home/lee/workspace/ROS_WS/ex_qav250_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lee/workspace/ROS_WS/ex_qav250_ws/src /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1 /home/lee/workspace/ROS_WS/ex_qav250_ws/build /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1 /home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/CMakeFiles/optitrack.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/yajie_ws/ex_qav250_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/yajie_ws/ex_qav250_ws/src /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1 /home/ubuntu/yajie_ws/ex_qav250_ws/build /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1 /home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/CMakeFiles/optitrack.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mav1/CMakeFiles/optitrack.dir/depend
 

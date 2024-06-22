@@ -1,4 +1,4 @@
-prefix=/home/lee/workspace/ROS_WS/ex_qav250_ws/install
+prefix=/home/ubuntu/yajie_ws/ex_qav250_ws/install
 
 Name: mav1
 Description: Description of mav1

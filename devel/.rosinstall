@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/lee/workspace/ROS_WS/ex_qav250_ws/devel/setup.sh
+    local-name: /home/ubuntu/yajie_ws/ex_qav250_ws/devel/setup.sh

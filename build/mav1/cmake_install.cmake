@@ -1,8 +1,8 @@
-# Install script for directory: /home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1
+# Install script for directory: /home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/lee/workspace/ROS_WS/ex_qav250_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/yajie_ws/ex_qav250_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "RelWithDebInfo")
+    set(CMAKE_INSTALL_CONFIG_NAME "")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mav1/cmake" TYPE FILE FILES
-    "/home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1Config.cmake"
-    "/home/lee/workspace/ROS_WS/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1Config-version.cmake"
+    "/home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1Config.cmake"
+    "/home/ubuntu/yajie_ws/ex_qav250_ws/build/mav1/catkin_generated/installspace/mav1Config-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mav1" TYPE FILE FILES "/home/lee/workspace/ROS_WS/ex_qav250_ws/src/mav1/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mav1" TYPE FILE FILES "/home/ubuntu/yajie_ws/ex_qav250_ws/src/mav1/package.xml")
 endif()
 
